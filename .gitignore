@@ -52,7 +52,7 @@ CMakeUserPresets.json
 /x64
 ZERO_CHECK*
 ALL_BUILD*
-TicTacToeTrainer.sln
+TicTacToeTrainer.sln*
 */Debug
 *.dir
 *vcxproj*
