@@ -11,9 +11,12 @@ int main(int argc, char* argv[])
     std::vector<std::vector<char>> board(BOARD_SIZE, std::vector<char>(BOARD_SIZE, '*'));
     
     DrawBoard(board);
-    TrySetCell(board, 0, 0, CELL_TYPE::TAC);
-    TrySetCell(board, 1, 1, CELL_TYPE::TIC);
-    DrawBoard(board);
+
+    while (true)
+    {
+        PlayerMove(board);
+        DrawBoard(board);
+    }
     
     std::cin.get();
 }

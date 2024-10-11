@@ -14,3 +14,4 @@ bool CanSetCell(const std::vector<std::vector<char>>& board, char rowIdx, char c
 void SetCell(std::vector<std::vector<char>>& board, char rowIdx, char colIdx, CELL_TYPE type);
 char GetCellTypeSymbol(CELL_TYPE type);
 void TrySetCell(std::vector<std::vector<char>>& board, char rowIdx, char colIdx, CELL_TYPE type);
+void PlayerMove(std::vector<std::vector<char>>& board);
