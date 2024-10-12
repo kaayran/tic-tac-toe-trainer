@@ -12,6 +12,13 @@ int main(int argc, char* argv[])
     
     BoardRendererConsole boardRenderer;
     boardRenderer.Render(board);
+
+    board.TrySetCellValue(8, CellType::TIC);
+    boardRenderer.Render(board);
+    board.TrySetCellValue(8, CellType::TAC);
+    boardRenderer.Render(board);
+    board.TrySetCellValue(2, CellType::TIC);
+    boardRenderer.Render(board);
     
     std::cin.get();
 }

@@ -2,14 +2,21 @@
 
 #include <vector>
 
+enum class CellType
+{
+    TIC,    // X
+    TAC,    // O
+    TOE     // Empty
+};
+
 struct BoardCell
 {
 public:
-    int value; // 0 - Empty, 1 - X, 2 - O
+    CellType value;
 public:
     BoardCell()
     {
-        value = 0;
+        value = CellType::TOE;
     }
 };
 
@@ -25,5 +32,9 @@ public:
     void SetupBoard();
     bool CheckWinner();
     bool CheckTie();
-    std::vector<std::vector<BoardCell>> GetCells() {return cells;}
+    std::vector<std::vector<BoardCell>> GetCells() { return cells; }
+    bool TrySetCellValue(int cellIdx, CellType value);
+private:
+    bool CanSetCellValue(int cellIdx) const;
+    bool CanSetCellValue(int row, int col) const;
 };

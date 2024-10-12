@@ -6,6 +6,8 @@
 void BoardRendererConsole::Render(Board board)
 {
     const auto cells = board.GetCells();
+
+    std::cout << std::endl;
     
     for (size_t row = 0; row < cells.size(); ++row) {
         for (size_t col = 0; col < cells[row].size(); ++col) {
@@ -22,11 +24,11 @@ char BoardRendererConsole::GetCellSymbol(const BoardCell cell)
 {
     switch (cell.value)
     {
-    case 0:
+    case CellType::TOE:
         return '*';
-    case 1:
+    case CellType::TIC:
         return 'X';
-    case 2:
+    case CellType::TAC:
         return 'O';
     default:
         return '*';
