@@ -2,23 +2,9 @@
 
 #include <vector>
 
-enum class CellType
-{
-    TIC,    // X
-    TAC,    // O
-    TOE     // Empty
-};
+#include "BoardCell.h"
+#include "MoveData.h"
 
-struct BoardCell
-{
-public:
-    CellType value;
-public:
-    BoardCell()
-    {
-        value = CellType::TOE;
-    }
-};
 
 class Board
 {
@@ -30,10 +16,13 @@ private:
 
 public:
     void SetupBoard();
-    bool CheckWinner();
-    bool CheckTie();
+    bool CheckWinner() { return false; }
+    bool CheckTie() { return false; }
     std::vector<std::vector<BoardCell>> GetCells() { return cells; }
-    bool TrySetCellValue(int cellIdx, CellType value);
+    void SetCellValue(int row, int col, CellType value);
+    std::vector<int> GetEmptyCells();
+    bool TryMakeMove(MoveData moveData);
+
 private:
     bool CanSetCellValue(int cellIdx) const;
     bool CanSetCellValue(int row, int col) const;
