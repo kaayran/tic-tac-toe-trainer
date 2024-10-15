@@ -1,7 +1,5 @@
 ﻿#include "Board.h"
 
-#include <tuple>
-
 void Board::SetupBoard()
 {
     cells.clear();

@@ -5,7 +5,15 @@ project(TicTacToeTrainer)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../build)
 
 add_executable(TicTacToeTrainer
-    code/main.cpp
+        src/main.cpp
+        src/Board.cpp
+        src/BoardCell.cpp
+        src/BoardRenderer.cpp
+        src/CellType.cpp
+        src/MoveData.cpp
+        src/MoveProviderBase.cpp
+        src/MoveProviderComputer.cpp
+        src/MoveProviderPlayer.cpp
 )
 
-target_include_directories(TicTacToeTrainer PRIVATE code)
+target_include_directories(TicTacToeTrainer PRIVATE src)

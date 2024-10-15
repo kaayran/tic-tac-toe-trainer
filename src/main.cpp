@@ -7,36 +7,38 @@
 int main(int argc, char* argv[])
 {
     std::cout << "Hi! Welcome to Tic-Tac-Toe Trainer!\n";
-    
+
     Board board;
     board.SetupBoard();
-    
+
     BoardRendererConsole boardRenderer;
     boardRenderer.Render(board);
 
     bool isPlayerMove;
     char userInput;
-    std::cout << "Will you go first and play for crosses?\nY/n? ";
+    std::cout << "Will you go first and play for crosses?\nY/n?";
     std::cin >> userInput;
 
     if (userInput == 'Y' || userInput == 'y')
         isPlayerMove = true;
     else
         isPlayerMove = false;
-    
-    MoveProviderComputer computerMoveProvider(isPlayerMove ? CellType::TIC : CellType::TAC);
-    MoveProviderComputer playerMoveProvider(isPlayerMove ? CellType::TAC : CellType::TIC);
+
+    MoveProviderComputer playerMoveProvider(isPlayerMove ? CellType::TIC : CellType::TAC);
+    MoveProviderComputer computerMoveProvider(isPlayerMove ? CellType::TAC : CellType::TIC);
     
     while (true)
     {
-        if (board.CheckWinner()){
+        if (board.CheckWinner())
+        {
             break;
         }
 
-        if (board.CheckTie()){
+        if (board.CheckTie())
+        {
             break;
         }
-        
+
         if (isPlayerMove)
             board.TryMakeMove(playerMoveProvider.GenerateMove(board));
         else
@@ -46,6 +48,6 @@ int main(int argc, char* argv[])
 
         isPlayerMove = !isPlayerMove;
     }
-    
+
     std::cin.get();
 }
