@@ -33,11 +33,12 @@ int main(int argc, char* argv[])
     {
         if (board.CheckWinner())
         {
+            std::cout << "Someone wins!\n";
             break;
         }
 
-        if (board.CheckTie())
-        {
+        if (board.CheckTie()) {
+            std::cout << "Tie wins!\n";
             break;
         }
 

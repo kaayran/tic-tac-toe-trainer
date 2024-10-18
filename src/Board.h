@@ -16,8 +16,11 @@ private:
 
 public:
     void SetupBoard();
-    bool CheckWinner() { return false; }
-    bool CheckTie() { return false; }
+
+    bool CheckWinner();
+
+    bool CheckTie();
+
     std::vector<std::vector<BoardCell>> GetCells() { return cells; }
     void SetCellValue(int row, int col, CellType value);
     std::vector<int> GetEmptyCells();
@@ -26,4 +29,10 @@ public:
 
 private:
     bool CanSetCellValue(int row, int col) const;
+
+    bool CheckRow(int row);
+    bool CheckColumn(int col);
+
+    bool CheckAntiDiagonal();
+    bool CheckMainDiagonal();
 };
