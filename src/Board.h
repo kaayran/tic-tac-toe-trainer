@@ -22,8 +22,8 @@ public:
     void SetCellValue(int row, int col, CellType value);
     std::vector<int> GetEmptyCells();
     bool TryMakeMove(MoveData moveData);
+    bool CanSetCellValue(int cellIdx) const;
 
 private:
-    bool CanSetCellValue(int cellIdx) const;
     bool CanSetCellValue(int row, int col) const;
 };

@@ -4,13 +4,14 @@
 #include "CellType.h"
 #include "MoveData.h"
 
-class MoveProviderPlayer : public MoveProviderBase
-{
+class MoveProviderPlayer : public MoveProviderBase {
 public:
-    MoveProviderPlayer(CellType type)
-    {
+    MoveProviderPlayer(const CellType type) {
         cellType = type;
     }
-    
+
     MoveData GenerateMove(Board board) override;
+
+private:
+    bool IsInRange(int cellNum);
 };

@@ -1,4 +1,6 @@
-﻿#include <iostream>
+﻿#include <cstdint>
+#include <iostream>
+#include <MoveProviderPlayer.h>
 
 #include "Board.h"
 #include "BoardRenderer.h"
@@ -16,7 +18,7 @@ int main(int argc, char* argv[])
 
     bool isPlayerMove;
     char userInput;
-    std::cout << "Will you go first and play for crosses?\nY/n?";
+    std::cout << "Will you go first and play for crosses? Y/n?: ";
     std::cin >> userInput;
 
     if (userInput == 'Y' || userInput == 'y')
@@ -24,7 +26,7 @@ int main(int argc, char* argv[])
     else
         isPlayerMove = false;
 
-    MoveProviderComputer playerMoveProvider(isPlayerMove ? CellType::TIC : CellType::TAC);
+    MoveProviderPlayer playerMoveProvider(isPlayerMove ? CellType::TIC : CellType::TAC);
     MoveProviderComputer computerMoveProvider(isPlayerMove ? CellType::TAC : CellType::TIC);
     
     while (true)
@@ -39,14 +41,17 @@ int main(int argc, char* argv[])
             break;
         }
 
+        bool isValidMove;
         if (isPlayerMove)
-            board.TryMakeMove(playerMoveProvider.GenerateMove(board));
+            isValidMove = board.TryMakeMove(playerMoveProvider.GenerateMove(board));
         else
-            board.TryMakeMove(computerMoveProvider.GenerateMove(board));
+            isValidMove = board.TryMakeMove(computerMoveProvider.GenerateMove(board));
 
         boardRenderer.Render(board);
 
-        isPlayerMove = !isPlayerMove;
+        if (isValidMove) {
+            isPlayerMove = !isPlayerMove;
+        }
     }
 
     std::cin.get();

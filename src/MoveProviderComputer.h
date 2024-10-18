@@ -7,7 +7,7 @@
 class MoveProviderComputer : public MoveProviderBase
 {
 public:
-    MoveProviderComputer(CellType type)
+    MoveProviderComputer(const CellType type)
     {
         cellType = type;
     }

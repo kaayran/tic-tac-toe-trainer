@@ -5,11 +5,11 @@ struct MoveData
 {
 public:
     CellType cellType;
-    int boardRowIdx;
-    int boardColIdx;
+    int cellRowIdx;
+    int cellColIdx;
     
 public:
     MoveData() = default;
     MoveData(CellType cellType, int row, int col);
-    MoveData(CellType cellType, int boardIdx);
+    MoveData(CellType cellType, int cellIdx);
 };

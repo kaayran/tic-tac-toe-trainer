@@ -30,12 +30,12 @@ std::vector<int> Board::GetEmptyCells()
 
 bool Board::TryMakeMove(const MoveData moveData)
 {
-    if (!CanSetCellValue(moveData.boardRowIdx, moveData.boardColIdx))
+    if (!CanSetCellValue(moveData.cellRowIdx, moveData.cellColIdx))
     {
         return false;
     }
 
-    SetCellValue(moveData.boardRowIdx, moveData.boardColIdx, moveData.cellType);
+    SetCellValue(moveData.cellRowIdx, moveData.cellColIdx, moveData.cellType);
 
     return true;
 }
