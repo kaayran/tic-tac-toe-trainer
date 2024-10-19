@@ -13,26 +13,26 @@ public:
 
 private:
     std::vector<std::vector<BoardCell>> cells;
+    CellType winner;
 
 public:
-    void SetupBoard();
+    const std::vector<std::vector<BoardCell>>& GetCells() const { return cells; }
 
-    bool CheckWinner();
-
-    bool CheckTie();
-
-    std::vector<std::vector<BoardCell>> GetCells() { return cells; }
-    void SetCellValue(int row, int col, CellType value);
-    std::vector<int> GetEmptyCells();
-    bool TryMakeMove(MoveData moveData);
     bool CanSetCellValue(int cellIdx) const;
-
-private:
     bool CanSetCellValue(int row, int col) const;
 
-    bool CheckRow(int row);
-    bool CheckColumn(int col);
+    void SetupBoard();
+    bool IsGameEnded() const;
+    bool CheckTie() const;
+    CellType GetWinner() const;
+    void SetCellValue(int row, int col, CellType value);
+    void GetEmptyCells(std::vector<int>& emptyCells) const;
+    bool TryMakeMove(MoveData moveData);
 
-    bool CheckAntiDiagonal();
-    bool CheckMainDiagonal();
+private:
+    bool CheckWinner() const;
+    bool CheckRow(int row) const;
+    bool CheckColumn(int col) const;
+    bool CheckMainDiagonal() const;
+    bool CheckAntiDiagonal() const;
 };

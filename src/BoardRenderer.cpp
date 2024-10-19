@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-void BoardRendererConsole::Render(Board board)
+void BoardRendererConsole::Render(const Board& board)
 {
     const auto cells = board.GetCells();
 

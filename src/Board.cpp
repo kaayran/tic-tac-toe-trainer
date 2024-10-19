@@ -3,24 +3,21 @@
 void Board::SetupBoard() {
     cells.clear();
     cells.resize(SIZE, std::vector<BoardCell>(SIZE));
+
+    winner = CellType::TOE;
 }
 
 void Board::SetCellValue(const int row, const int col, const CellType value) {
-    BoardCell &cell = cells[row][col];
-    cell.value = value;
+    cells[row][col].value = value;
 }
 
-std::vector<int> Board::GetEmptyCells() {
-    std::vector<int> emptyCells;
-
+void Board::GetEmptyCells(std::vector<int>& emptyCells) const {
     for (size_t row = 0; row < cells.size(); ++row) {
         for (size_t col = 0; col < cells[row].size(); ++col) {
             if (!cells[row][col].IsEmpty()) continue;
             emptyCells.push_back(row * SIZE + col);
         }
     }
-
-    return emptyCells;
 }
 
 bool Board::TryMakeMove(const MoveData moveData) {
@@ -29,8 +26,25 @@ bool Board::TryMakeMove(const MoveData moveData) {
     }
 
     SetCellValue(moveData.cellRowIdx, moveData.cellColIdx, moveData.cellType);
+    if (CheckWinner()) {
+        winner = moveData.cellType;
+    }
 
     return true;
+}
+
+bool Board::CheckWinner() const {
+    for (int i = 0; i < SIZE; ++i) {
+        if (CheckRow(i) || CheckColumn(i)) {
+            return true;
+        }
+    }
+
+    if (CheckMainDiagonal() || CheckAntiDiagonal()) {
+        return true;
+    }
+
+    return false;
 }
 
 bool Board::CanSetCellValue(const int cellIdx) const {
@@ -45,7 +59,7 @@ bool Board::CanSetCellValue(const int row, const int col) const {
     return cell.value == CellType::TOE;
 }
 
-bool Board::CheckRow(int const row) {
+bool Board::CheckRow(int const row) const {
     const CellType last = cells[row][0].value;
     if (last == CellType::TOE) {
         return false;
@@ -60,7 +74,7 @@ bool Board::CheckRow(int const row) {
     return true;
 }
 
-bool Board::CheckColumn(int col) {
+bool Board::CheckColumn(int col) const {
     const CellType last = cells[0][col].value;
     if (last == CellType::TOE) {
         return false;
@@ -75,8 +89,8 @@ bool Board::CheckColumn(int col) {
     return true;
 }
 
-bool Board::CheckMainDiagonal() {
-    CellType last = cells[0][0].value;
+bool Board::CheckMainDiagonal() const {
+    const CellType last = cells[0][0].value;
     if (last == CellType::TOE) {
         return false;
     }
@@ -89,7 +103,7 @@ bool Board::CheckMainDiagonal() {
     return true;
 }
 
-bool Board::CheckAntiDiagonal() {
+bool Board::CheckAntiDiagonal() const {
     const CellType last = cells[0][SIZE - 1].value;
     if (last == CellType::TOE) {
         return false;
@@ -103,20 +117,16 @@ bool Board::CheckAntiDiagonal() {
     return true;
 }
 
-bool Board::CheckWinner() {
-    for (int i = 0; i < SIZE; ++i) {
-        if (CheckRow(i) || CheckColumn(i)) {
-            return true;
-        }
-    }
-
-    if (CheckMainDiagonal() || CheckAntiDiagonal()) {
-        return true;
-    }
-
-    return false;
+bool Board::IsGameEnded() const {
+    return winner != CellType::TOE;
 }
 
-bool Board::CheckTie() {
-    return GetEmptyCells().empty();
+bool Board::CheckTie() const {
+    std::vector<int> emptyCells;
+    GetEmptyCells(emptyCells);
+    return emptyCells.empty();
+}
+
+CellType Board::GetWinner() const {
+    return winner;
 }

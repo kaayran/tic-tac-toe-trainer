@@ -13,5 +13,5 @@ public:
         value = CellType::TOE;
     }
 
-    bool IsEmpty() { return value == CellType::TOE; }
+    bool IsEmpty() const { return value == CellType::TOE; }
 };

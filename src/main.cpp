@@ -1,5 +1,4 @@
-﻿#include <cstdint>
-#include <iostream>
+﻿#include <iostream>
 #include <MoveProviderPlayer.h>
 
 #include "Board.h"
@@ -18,7 +17,7 @@ int main(int argc, char* argv[])
 
     bool isPlayerMove;
     char userInput;
-    std::cout << "Will you go first and play for crosses? Y/n?: ";
+    std::cout << "Will you go first and play for crosses? Y/n?:";
     std::cin >> userInput;
 
     if (userInput == 'Y' || userInput == 'y')
@@ -28,12 +27,12 @@ int main(int argc, char* argv[])
 
     MoveProviderPlayer playerMoveProvider(isPlayerMove ? CellType::TIC : CellType::TAC);
     MoveProviderComputer computerMoveProvider(isPlayerMove ? CellType::TAC : CellType::TIC);
-    
+
     while (true)
     {
-        if (board.CheckWinner())
+        if (board.IsGameEnded())
         {
-            std::cout << "Someone wins!\n";
+            std::cout << "Winner is - " << GetCellTypeEnumString(board.GetWinner());
             break;
         }
 
