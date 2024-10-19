@@ -4,6 +4,7 @@
 #include "Board.h"
 #include "BoardRenderer.h"
 #include "MoveProviderComputer.h"
+#include "MoveProviderComputerPredictor.h"
 
 int main(int argc, char* argv[])
 {
@@ -26,7 +27,7 @@ int main(int argc, char* argv[])
         isPlayerMove = false;
 
     MoveProviderPlayer playerMoveProvider(isPlayerMove ? CellType::TIC : CellType::TAC);
-    MoveProviderComputer computerMoveProvider(isPlayerMove ? CellType::TAC : CellType::TIC);
+    MoveProviderComputerPredictor computerMoveProvider(isPlayerMove ? CellType::TAC : CellType::TIC);
 
     while (true)
     {

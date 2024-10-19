@@ -10,3 +10,4 @@ enum struct CellType
 };
 
 std::string GetCellTypeEnumString(CellType type);
+CellType GetCellTypeOther(CellType self);

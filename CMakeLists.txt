@@ -14,6 +14,8 @@ add_executable(TicTacToeTrainer
         src/MoveProviderBase.cpp
         src/MoveProviderComputer.cpp
         src/MoveProviderPlayer.cpp
+        src/MoveProviderComputerPredictor.cpp
+        src/MoveProviderComputerPredictor.h
 )
 
 target_include_directories(TicTacToeTrainer PRIVATE src)
