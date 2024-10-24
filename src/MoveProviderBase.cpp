@@ -1,15 +1,15 @@
 ﻿#include "MoveProviderBase.h"
 
-MoveData::MoveData(const CellType type, const int row, const int col)
+MoveData::MoveData(const CellType inCellType, const int row, const int col)
 {
-    cellType = type;
+    cellType = inCellType;
     cellRowIdx = row;
     cellColIdx = col;
 }
 
-MoveData::MoveData(const CellType type, const int cellIdx)
+MoveData::MoveData(const CellType inCellType, const int cellIdx)
 {
-    cellType = type;
+    cellType = inCellType;
     cellRowIdx = cellIdx / Board::SIZE;
     cellColIdx = cellIdx % Board::SIZE;
 }

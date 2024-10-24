@@ -13,5 +13,5 @@ protected:
 public:
     virtual ~MoveProviderBase() = default;
 
-    virtual MoveData GenerateMove(Board board) { return {};}
+    virtual MoveData GenerateMove(const Board &board) { return {};}
 };

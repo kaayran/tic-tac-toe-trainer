@@ -35,7 +35,7 @@ public:
     CellType GetWinner() const;
     void SetCellValue(int row, int col, CellType value);
     void GetEmptyCells(std::vector<int>& emptyCells) const;
-    bool TryMakeMove(MoveData moveData);
+    bool TryMakeMove(const MoveData &moveData);
 
 private:
     bool CheckRow(int row) const;

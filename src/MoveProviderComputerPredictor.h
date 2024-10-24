@@ -8,7 +8,7 @@ public:
         cellType = type;
     }
 
-    MoveData GenerateMove(Board board) override;
+    MoveData GenerateMove(const Board &board) override;
 
 private:
     int MinMax(const Board &board, int depth, int isMax, int alpha, int beta);

@@ -13,7 +13,7 @@ std::string GetCellTypeEnumString(const CellType type) {
     }
 }
 
-CellType GetCellTypeOther(CellType self) {
+CellType GetCellTypeOther(const CellType self) {
     switch (self) {
         case CellType::TIC:
             return CellType::TAC;

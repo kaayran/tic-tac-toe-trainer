@@ -3,7 +3,7 @@
 #include <iostream>
 #include <limits>
 
-MoveData MoveProviderComputerPredictor::GenerateMove(const Board board) {
+MoveData MoveProviderComputerPredictor::GenerateMove(const Board &board) {
     std::vector<int> emptyCells;
     board.GetEmptyCells(emptyCells);
 

@@ -5,7 +5,7 @@
 
 void BoardRendererConsole::Render(const Board& board)
 {
-    const auto cells = board.GetCells();
+    const auto &cells = board.GetCells();
 
     std::cout << std::endl;
     

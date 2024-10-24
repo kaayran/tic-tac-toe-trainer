@@ -10,8 +10,5 @@ public:
         cellType = type;
     }
 
-    MoveData GenerateMove(Board board) override;
-
-private:
-    bool IsInRange(int cellNum);
+    MoveData GenerateMove(const Board &board) override;
 };

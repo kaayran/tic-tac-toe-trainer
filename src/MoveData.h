@@ -10,6 +10,6 @@ public:
     
 public:
     MoveData() = default;
-    MoveData(CellType cellType, int row, int col);
-    MoveData(CellType cellType, int cellIdx);
+    MoveData(CellType inCellType, int row, int col);
+    MoveData(CellType inCellType, int cellIdx);
 };

@@ -20,7 +20,7 @@ void Board::GetEmptyCells(std::vector<int>& emptyCells) const {
     }
 }
 
-bool Board::TryMakeMove(const MoveData moveData) {
+bool Board::TryMakeMove(const MoveData &moveData) {
     if (!CanSetCellValue(moveData.cellRowIdx, moveData.cellColIdx)) {
         return false;
     }
@@ -74,7 +74,7 @@ bool Board::CheckRow(int const row) const {
     return true;
 }
 
-bool Board::CheckColumn(int col) const {
+bool Board::CheckColumn(const int col) const {
     const CellType last = cells[0][col].value;
     if (last == CellType::TOE) {
         return false;

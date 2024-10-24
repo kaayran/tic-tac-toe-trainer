@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
         }
 
         if (board.CheckTie()) {
-            std::cout << "Tie wins!\n";
+            std::cout << "It's Tie!\n";
             break;
         }
 
