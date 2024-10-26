@@ -11,13 +11,16 @@ void Board::SetCellValue(const int row, const int col, const CellType value) {
     cells[row][col].value = value;
 }
 
-void Board::GetEmptyCells(std::vector<int>& emptyCells) const {
+std::vector<int> Board::GetEmptyCells() const {
+    std::vector<int> emptyCells;
     for (size_t row = 0; row < cells.size(); ++row) {
         for (size_t col = 0; col < cells[row].size(); ++col) {
             if (!cells[row][col].IsEmpty()) continue;
             emptyCells.push_back(row * SIZE + col);
         }
     }
+
+    return emptyCells;
 }
 
 bool Board::TryMakeMove(const MoveData &moveData) {
@@ -122,9 +125,7 @@ bool Board::IsGameEnded() const {
 }
 
 bool Board::CheckTie() const {
-    std::vector<int> emptyCells;
-    GetEmptyCells(emptyCells);
-    return emptyCells.empty();
+    return GetEmptyCells().empty();
 }
 
 CellType Board::GetWinner() const {

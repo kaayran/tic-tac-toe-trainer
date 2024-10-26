@@ -4,8 +4,7 @@
 #include <limits>
 
 MoveData MoveProviderComputerPredictor::GenerateMove(const Board &board) {
-    std::vector<int> emptyCells;
-    board.GetEmptyCells(emptyCells);
+    const auto& emptyCells = board.GetEmptyCells();
 
     std::vector<std::pair<MoveData, int>> moves;
     int bestScore = std::numeric_limits<int>::min();
@@ -46,8 +45,7 @@ int MoveProviderComputerPredictor::MinMax(const Board &board, const int depth, c
         }
     }
 
-    std::vector<int> emptyCellsIdxs;
-    board.GetEmptyCells(emptyCellsIdxs);
+    const auto& emptyCellsIdxs = board.GetEmptyCells();
     if (emptyCellsIdxs.empty()) {
         return 0;
     }

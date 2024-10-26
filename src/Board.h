@@ -13,16 +13,9 @@ public:
 
 private:
     std::vector<std::vector<BoardCell>> cells;
-    CellType winner;
+    CellType winner = CellType::TOE;
 
 public:
-    Board() = default;
-
-    Board(const Board& other) {
-        cells = other.cells;
-        winner = other.winner;
-    };
-
     const std::vector<std::vector<BoardCell>>& GetCells() const { return cells; }
 
     bool CanSetCellValue(int cellIdx) const;
@@ -34,7 +27,7 @@ public:
     bool CheckWinner() const;
     CellType GetWinner() const;
     void SetCellValue(int row, int col, CellType value);
-    void GetEmptyCells(std::vector<int>& emptyCells) const;
+    std::vector<int> GetEmptyCells() const;
     bool TryMakeMove(const MoveData &moveData);
 
 private:

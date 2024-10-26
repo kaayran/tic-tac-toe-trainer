@@ -4,9 +4,8 @@
 
 MoveData MoveProviderComputer::GenerateMove(const Board &board)
 {
-    std::vector<int> cells;
-    board.GetEmptyCells(cells);
-    
+    const auto& cells = board.GetEmptyCells();
+
     std::random_device rd;
     std::mt19937 gen(rd());
     const std::vector<int>::size_type cellsSize = cells.size();

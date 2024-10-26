@@ -2,18 +2,16 @@
 
 #include "Board.h"
 
-class BoardRendererBase
-{
+class BoardRendererBase {
 public:
     virtual ~BoardRendererBase() = default;
-    
-    virtual void Render(const Board& board) {}
+
+    virtual void Render(const Board &board) = 0;
 };
 
-class BoardRendererConsole : public BoardRendererBase
-{
+class BoardRendererConsole : public BoardRendererBase {
 public:
-    void Render(const Board& board) override;
+    void Render(const Board &board) override;
 
 private:
     char GetCellSymbol(BoardCell cell);

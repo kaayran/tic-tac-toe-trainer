@@ -3,12 +3,10 @@
 
 struct MoveData
 {
-public:
     CellType cellType;
     int cellRowIdx;
     int cellColIdx;
-    
-public:
+
     MoveData() = default;
     MoveData(CellType inCellType, int row, int col);
     MoveData(CellType inCellType, int cellIdx);

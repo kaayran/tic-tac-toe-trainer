@@ -5,13 +5,12 @@
 #include "MoveData.h"
 
 
-class MoveProviderBase
-{
+class MoveProviderBase {
 protected:
     CellType cellType = CellType::TOE;
 
 public:
     virtual ~MoveProviderBase() = default;
 
-    virtual MoveData GenerateMove(const Board &board) { return {};}
+    virtual MoveData GenerateMove(const Board &board) = 0;
 };
